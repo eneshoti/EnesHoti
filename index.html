@@ -26,8 +26,72 @@
     @media(max-width:600px){.top{padding:19px 20px;font-size:9px}.stage{padding:83px 19px 63px}.birth-content{min-height:530px}.birth-hint{top:calc(50% + 128px);font-size:16px;line-height:1.3}.birth-center{width:180px;height:180px}.birth-quote{font-size:17px}.birth-orbit{width:94vw}.game-panel{padding:32px 21px}.sentence{font-size:25px}.scroll-cue{bottom:20px}.polaroid{padding:9px 9px 37px}.polaroid img{width:min(250px,67vw);height:min(320px,78vw)}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
   </style>
+  <style>
+    /* Password gate, anniversary counter, and shared-story timeline */
+    .password-gate{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 30%,#492333 0,#1b111c 68%,#0c0a0e 100%);transition:opacity .7s,visibility .7s}
+    .password-gate.dismissed{opacity:0;visibility:hidden;pointer-events:none}
+    .password-card{width:min(430px,100%);padding:clamp(30px,7vw,54px);text-align:center;border:1px solid #d9bd8548;background:#ffffff08;box-shadow:0 28px 100px #0008;backdrop-filter:blur(12px);animation:softIn .9s both}
+    .password-mark{font-size:32px;color:#d85d68;animation:heartBeat 2.2s ease-in-out infinite}
+    .password-title{font:400 clamp(38px,8vw,56px)/1 var(--serif);margin:18px 0 12px}
+    .password-input{width:100%;margin-top:24px;padding:14px 16px;text-align:center;letter-spacing:.32em;color:var(--cream);background:#100b1280;border:1px solid #ffffff30;outline:none}
+    .password-input:focus{border-color:var(--gold)}
+    .password-submit{width:100%;margin-top:12px;padding:14px;border:1px solid #d9bd8570;background:#d9bd8515;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .25s,transform .25s}
+    .password-submit:hover{background:#d9bd8526;transform:translateY(-2px)}
+    .password-feedback{min-height:24px;margin:16px 0 0;color:#ef9aa1;font-size:13px}
+    .password-gate.shake{animation:shake .35s}
+    .anniversary{width:min(640px,100%);margin:22px auto 0;padding:17px 20px;border:1px solid #d9bd852b;background:#110b126b;backdrop-filter:blur(8px)}
+    .anniversary-label{margin:0;color:#d6c2c5;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+    .anniversary-count{margin:8px 0 0;color:var(--gold);font:400 clamp(27px,6vw,43px)/1.1 var(--serif);font-variant-numeric:tabular-nums}
+    .anniversary-time{margin:7px 0 0;color:#d8c6cb;font-size:12px;letter-spacing:.09em;font-variant-numeric:tabular-nums}
+    .rose-garden{width:100%;margin:14px auto 5px}
+    .rose-garden canvas{display:block;width:100%;height:150px}
+    .flower-counts{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 18px;margin:7px 0 0;color:#d6c4c8;font-size:11px;font-variant-numeric:tabular-nums}
+    .flower-counts strong{font-weight:600}
+    .red-count{color:#f06a73}.white-count{color:#fff}
+    .rose-caption{margin:7px 0 0;color:#bfaeb4;font:italic 14px var(--serif)}
+    .music-link{display:inline-flex;align-items:center;gap:9px;margin-top:14px;padding:9px 15px;border:1px solid #ffffff24;border-radius:30px;color:#ead6d3;text-decoration:none;font-size:11px;letter-spacing:.08em;transition:border-color .25s,background .25s}
+    .music-link:hover{border-color:#d9bd8580;background:#d9bd8510}
+    .music-player{display:block;width:min(420px,100%);height:150px;margin:14px auto 0;border:0;border-radius:12px}
+    #moments{min-height:100svh;padding-top:120px;padding-bottom:110px}
+    .timeline{width:min(660px,100%);margin:50px auto 0;position:relative;text-align:left}
+    .timeline:before{content:"";position:absolute;left:75px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,transparent,#d9bd8570 10%,#d9bd8570 90%,transparent)}
+    .moment{display:grid;grid-template-columns:58px 1fr;gap:34px;position:relative;padding:0 0 36px;opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s}
+    .moment:last-child{padding-bottom:0}
+    .moment.in{opacity:1;transform:translateY(0)}
+    .moment:before{content:"";position:absolute;left:70px;top:7px;width:11px;height:11px;border-radius:50%;background:#d9bd85;box-shadow:0 0 16px #d9bd8570}
+    .moment-date{margin:1px 0 0;color:var(--gold);font:500 12px var(--sans);letter-spacing:.08em;text-transform:uppercase}
+    .moment h3{margin:0 0 5px;color:#f0e4de;font:400 26px/1 var(--serif)}
+    .moment p{margin:0;color:#c7b6bc;font:400 16px/1.65 var(--serif)}
+    .moment:last-child h3{color:#f2bdc2}
+    .timeline-next{display:flex;justify-content:center}
+    .hug-scene{display:block;width:min(360px,100%);height:auto;margin:15px auto 0;overflow:visible}
+    .hug-shadow{fill:#d9bd8518}
+    .hug-kid{transform-box:fill-box;transform-origin:center bottom;animation:kidSway 3.8s ease-in-out infinite}
+    .hug-kid.second{animation-delay:-1.9s}
+    .hug-arm{fill:none;stroke-linecap:round;stroke-linejoin:round;animation:armHug 3.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+    .hug-heart{fill:#f07883;transform-box:fill-box;transform-origin:center;animation:heartBeat 1.5s ease-in-out infinite}
+    .hug-spark{fill:#edc98b;transform-box:fill-box;transform-origin:center;animation:sparkFloat 2.4s ease-in-out infinite}
+    .hug-spark:nth-of-type(2){animation-delay:-.8s}
+    .hug-spark:nth-of-type(3){animation-delay:-1.6s}
+    @keyframes kidSway{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-4px) rotate(1deg)}}
+    @keyframes armHug{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(3deg)}}
+    @keyframes sparkFloat{0%,100%{opacity:.4;transform:translateY(3px) scale(.8)}50%{opacity:1;transform:translateY(-5px) scale(1.15)}}
+    @media(max-width:600px){.anniversary{padding:14px 12px}.rose-garden canvas{height:130px}.timeline{margin-top:38px}.timeline:before{left:63px}.moment{grid-template-columns:48px 1fr;gap:30px;padding-bottom:30px}.moment:before{left:58px}.moment h3{font-size:23px}.moment p{font-size:15px}}
+  </style>
 </head>
 <body>
+  <div class="password-gate" id="passwordGate">
+    <form class="password-card" id="passwordForm">
+      <div class="password-mark" aria-hidden="true">♥</div>
+      <p class="kicker">një kujtim i vogël, vetëm për ty</p>
+      <h1 class="password-title">Hyr në <em class="gold">historinë tonë</em></h1>
+      <p class="subtle">Disa gjëra hapen vetëm me datën që i dha kuptim gjithçkaje.</p>
+      <label class="hidden" for="passwordInput">Fjalëkalimi</label>
+      <input class="password-input" id="passwordInput" type="password" inputmode="numeric" autocomplete="off" placeholder="••••••••" aria-label="Fjalëkalimi" required>
+      <button class="password-submit" type="submit">Hap kujtimin ♡</button>
+      <p class="password-feedback" id="passwordFeedback" aria-live="polite"></p>
+    </form>
+  </div>
   <div class="ambient" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
   <header class="top"><span class="brand">L I N D J A</span><span class="chapter" id="chapter">I &nbsp;·&nbsp; FILLIMI</span></header>
 
@@ -38,6 +102,16 @@
       <p class="kicker">çdo gjë e bukur fillon diku</p>
       <h1 class="birth-title">Para se të bëheshe <em>ti</em>...</h1>
       <p class="subtle" id="birthIntro" class="subtle">...fillove si një ndjenjë që po merrte formë.</p>
+      <div class="anniversary" aria-live="off">
+        <p class="anniversary-label">që nga 19.09.2026 · 22:22</p>
+        <p class="anniversary-count"><span id="dayCount">0</span> ditë bashkë</p>
+        <p class="anniversary-time" id="elapsedTime">00:00:00:00</p>
+        <div class="rose-garden"><canvas id="roseGarden" aria-hidden="true"></canvas></div>
+        <p class="flower-counts" aria-live="off"><span class="red-count">✿ <strong id="dayFlowerCount">0</strong> të kuqe · një për çdo ditë</span><span class="white-count">✿ <strong id="hourFlowerCount">0</strong> të bardha · një për çdo orë</span></p>
+        <p class="rose-caption">lulet rriten bashkë me kohën tonë ♡</p>
+      </div>
+      <iframe class="music-player" id="musicPlayer" title="Alban Skenderaj feat. Majk — Mrekullia e 8" data-src="https://embed.music.apple.com/us/album/mrekullia-e-8-feat-majk/1157548844?i=1157549023&amp;autoplay=1&amp;loop=1" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" loading="lazy"></iframe>
+      <a class="music-link" href="https://music.apple.com/us/album/mrekullia-e-8-feat-majk/1157548844?i=1157549023" target="_blank" rel="noopener noreferrer">♫ &nbsp;Hape dhe përsërite në Apple Music <span aria-hidden="true">↗</span></a>
       <div class="birth-hint" id="birthHint" aria-live="polite"></div>
       <div class="birth-center" id="birthCenter">
         <div class="birth-aura"></div><div class="birth-blob" id="birthBlob"></div>
@@ -48,7 +122,61 @@
       <p class="birth-quote" id="birthQuote">Dhe tani, të gjitha fjalët kanë një fytyrë.</p>
       <div class="progress-track" id="progressTrack" aria-label="Përparimi i lindjes"><div class="progress-fill" id="progressFill"></div></div>
     </div>
-    <a class="scroll-cue" id="scrollCue" href="#message">scroll për të vazhduar <span>↓</span></a>
+    <a class="scroll-cue" id="scrollCue" href="#moments">scroll për të vazhduar <span>↓</span></a>
+  </section>
+
+  <section class="stage" id="moments" aria-label="Kronologjia jonë">
+    <div class="content message-wrap">
+      <p class="kicker">katër data, një histori</p>
+      <h2 class="heading">Nga një kërkesë<br><em class="gold">te ne të dy.</em></h2>
+      <div class="timeline" id="timeline">
+        <article class="moment">
+          <p class="moment-date">09.09</p>
+          <div><h3>Një add në Snap</h3><p>Një kërkesë e vogël — pa e ditur se po hapte diçka kaq të madhe.</p></div>
+        </article>
+        <article class="moment">
+          <p class="moment-date">19.09</p>
+          <div><h3>Një e qeshur në buongiorno</h3><p>Një e qeshur që e bëri përshëndetjen tonë të paharrueshme.</p>
+            <svg class="hug-scene" viewBox="0 0 360 210" role="img" aria-labelledby="hugTitle hugDesc">
+              <title id="hugTitle">Dy fëmijë duke u përqafuar</title>
+              <desc id="hugDesc">Ilustrim i animuar i dy fëmijëve që përqafohen butësisht.</desc>
+              <ellipse class="hug-shadow" cx="180" cy="188" rx="98" ry="12"/>
+              <g class="hug-kid" transform="translate(81 43)">
+                <path d="M38 97Q13 125 20 164Q55 181 91 164Q99 129 75 97Z" fill="#c87583"/>
+                <circle cx="57" cy="47" r="31" fill="#e8b89d"/>
+                <path d="M27 45Q27 9 59 13Q88 13 89 48Q75 32 57 33Q41 34 27 45" fill="#49323b"/>
+                <path d="M39 53h3M70 53h3M53 66q5 5 10 0" stroke="#654652" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path class="hug-arm" d="M28 109Q-1 119 1 145Q4 158 25 151" stroke="#e8b89d" stroke-width="16"/>
+              </g>
+              <g class="hug-kid second" transform="translate(187 42)">
+                <path d="M39 99Q13 127 21 164Q56 181 92 164Q100 128 76 98Z" fill="#728e9c"/>
+                <circle cx="59" cy="47" r="31" fill="#b9795f"/>
+                <path d="M28 43Q31 12 61 13Q88 15 89 45Q76 30 58 32Q42 32 28 43" fill="#332d36"/>
+                <path d="M42 53h3M72 53h3M56 66q5 5 10 0" stroke="#593d3b" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path class="hug-arm" d="M86 110Q116 119 114 145Q111 158 90 151" stroke="#b9795f" stroke-width="16"/>
+              </g>
+              <path class="hug-heart" d="M180 35C168 23 149 40 180 64C211 40 192 23 180 35Z"/>
+              <path class="hug-spark" d="M106 63l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>
+              <path class="hug-spark" d="M250 75l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/>
+              <path class="hug-spark" d="M130 31l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
+            </svg>
+          </div>
+        </article>
+        <article class="moment">
+          <p class="moment-date">19.09 · 22:22</p>
+          <div><h3>Mesazhi ynë</h3><p>Një orë që s'e harrojmë — prej asaj nate, filloi numërimi ynë.</p></div>
+        </article>
+        <article class="moment">
+          <p class="moment-date">26.09</p>
+          <div><h3>E kuptova: të dua</h3><p>Atë ditë e kuptova se ajo që ndieja për ty ishte dashuri.</p></div>
+        </article>
+        <article class="moment">
+          <p class="moment-date">01.10</p>
+          <div><h3>Një përqafim që na dridhi themelet</h3><p>Dhe bota jonë u bë edhe më e jona.</p></div>
+        </article>
+      </div>
+      <div class="timeline-next"><button class="continue" data-goto="message">vazhdo udhëtimin &nbsp;↓</button></div>
+    </div>
   </section>
 
   <!-- SCENA 2 — mesazhi shfaqet fjali pas fjalie kur seksioni hyn në pamje. -->
@@ -177,12 +305,71 @@
     else startBirth();
 
     // Chapter label follows the active scene; message lines animate on arrival.
-    const chapterNames={birth:'I  ·  FILLIMI',message:'II  ·  FJALËT',game:'III  ·  LOJA',reveal:'IV  ·  E VËRTETA',love:'V  ·  NE TË DY'};
+    const chapterNames={birth:'I  ·  FILLIMI',moments:'II  ·  HISTORIA',message:'III  ·  FJALËT',game:'IV  ·  LOJA',reveal:'V  ·  E VËRTETA',love:'VI  ·  NE TË DY'};
     if('IntersectionObserver'in window){
       const sceneObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)$('chapter').textContent=chapterNames[entry.target.id]||'';}),{threshold:.35});
-      ['birth','message','game','reveal','love'].forEach(id=>sceneObserver.observe($(id)));
+      ['birth','moments','message','game','reveal','love'].forEach(id=>sceneObserver.observe($(id)));
       const lineObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){const lines=[...$('sentences').children];lines.forEach((line,i)=>window.setTimeout(()=>line.classList.add('in'),i*(reduceMotion?150:2500)));lineObserver.disconnect();}}),{threshold:.2});lineObserver.observe($('sentences'));
-    }else [...$('sentences').children].forEach(line=>line.classList.add('in'));
+      const momentObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){const moments=[...$('timeline').children];moments.forEach((moment,i)=>window.setTimeout(()=>moment.classList.add('in'),i*(reduceMotion?100:350)));momentObserver.disconnect();}}),{threshold:.2});momentObserver.observe($('timeline'));
+    }else{[...$('sentences').children].forEach(line=>line.classList.add('in'));[...$('timeline').children].forEach(moment=>moment.classList.add('in'));}
+
+    // One red blossom for each completed day and one smaller white blossom per hour.
+    const anniversaryStart=new Date(2026,8,19,22,22,0);
+    const gardenCanvas=$('roseGarden');
+    const gardenContext=gardenCanvas.getContext('2d');
+    let previousElapsedHour=-1,previousDayCount=-1;
+    function drawFlower(context,x,y,size,color,pulse=1){
+      context.save();context.translate(x,y);context.scale(pulse,pulse);context.fillStyle=color;
+      for(let petal=0;petal<5;petal++){
+        context.save();context.rotate(petal*Math.PI*2/5);context.beginPath();
+        context.ellipse(0,-size*.3,size*.19,size*.3,0,0,Math.PI*2);context.fill();context.restore();
+      }
+      context.fillStyle=color==='#fff8f4'?'#e7c994':'#ffc0a8';context.beginPath();context.arc(0,0,size*.12,0,Math.PI*2);context.fill();
+      context.restore();
+    }
+    function drawGarden(days,hours,totalSeconds){
+      const bounds=gardenCanvas.getBoundingClientRect(),width=Math.max(1,bounds.width),pixelRatio=window.devicePixelRatio||1;
+      const redSpacing=14,whiteSpacing=7,redColumns=Math.max(1,Math.floor(width/redSpacing)),whiteColumns=Math.max(1,Math.floor(width/whiteSpacing));
+      const redRows=Math.ceil(days/redColumns),whiteRows=Math.ceil(hours/whiteColumns),height=Math.max(90,Math.min(260,redRows*redSpacing+whiteRows*whiteSpacing+12));
+      gardenCanvas.style.height=`${height}px`;gardenCanvas.width=Math.round(width*pixelRatio);gardenCanvas.height=Math.round(height*pixelRatio);
+      gardenContext.setTransform(pixelRatio,0,0,pixelRatio,0,0);gardenContext.clearRect(0,0,width,height);
+      for(let i=0;i<days;i++){
+        const pulse=i===days-1?1+.16*Math.sin(totalSeconds*Math.PI/2):1;
+        drawFlower(gardenContext,7+(i%redColumns)*redSpacing,8+Math.floor(i/redColumns)*redSpacing,10,'#e45461',pulse);
+      }
+      const whiteStartY=redRows*redSpacing+8;
+      for(let i=0;i<hours;i++){
+        const pulse=i===hours-1?1+.13*Math.sin(totalSeconds*Math.PI/2):1;
+        drawFlower(gardenContext,4+(i%whiteColumns)*whiteSpacing,whiteStartY+Math.floor(i/whiteColumns)*whiteSpacing,5,'#fff8f4',pulse);
+      }
+      gardenCanvas.setAttribute('aria-label',`${days} lule të kuqe, një për çdo ditë, dhe ${hours} lule të bardha, një për çdo orë.`);
+    }
+    function updateAnniversary(){
+      const elapsed=Math.max(0,Date.now()-anniversaryStart.getTime()),totalSeconds=Math.floor(elapsed/1000);
+      const days=Math.floor(elapsed/86400000),totalHours=Math.floor(elapsed/3600000),hours=Math.floor(elapsed%86400000/3600000),minutes=Math.floor(elapsed%3600000/60000),seconds=totalSeconds%60;
+      $('dayCount').textContent=days.toLocaleString('sq-AL');
+      $('elapsedTime').textContent=`${days} ditë · ${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+      $('dayFlowerCount').textContent=days.toLocaleString('sq-AL');
+      $('hourFlowerCount').textContent=totalHours.toLocaleString('sq-AL');
+      if(days!==previousDayCount||totalHours!==previousElapsedHour||totalSeconds%2===0)drawGarden(days,totalHours,totalSeconds);
+      previousDayCount=days;previousElapsedHour=totalHours;
+    }
+    updateAnniversary();window.setInterval(updateAnniversary,1000);
+    window.addEventListener('resize',updateAnniversary);
+
+    // This is a lightweight client-side gate, not server-side access control.
+    $('passwordForm').addEventListener('submit',event=>{
+      event.preventDefault();
+      if($('passwordInput').value==='19092222'){
+        $('passwordFeedback').textContent='';$('passwordGate').classList.add('dismissed');$('passwordInput').value='';
+        $('musicPlayer').src=$('musicPlayer').dataset.src;
+        window.setTimeout(()=>$('passwordGate').remove(),750);
+        return;
+      }
+      $('passwordFeedback').textContent='Fjalëkalimi nuk është i saktë. Provo edhe një herë ♡';
+      $('passwordGate').classList.remove('shake');void $('passwordGate').offsetWidth;$('passwordGate').classList.add('shake');
+      $('passwordInput').select();
+    });
 
     // Buttons that move to the next scene scroll smoothly.
     document.querySelectorAll('[data-goto]').forEach(button=>button.addEventListener('click',()=>$(button.dataset.goto).scrollIntoView({behavior:reduceMotion?'auto':'smooth'})));
