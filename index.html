@@ -25,6 +25,115 @@
     .final-lines{display:grid;gap:19px;margin:30px auto 0}.final-line{font:400 clamp(22px,4vw,34px)/1.3 var(--serif);color:#e6d9d6;opacity:0;transform:translateY(12px);transition:opacity 1.2s,transform 1.2s}.final-line.in{opacity:1;transform:none}.final-line.last{font-size:clamp(32px,6vw,52px);color:var(--gold)}.polaroid{display:inline-block;background:#f1e9df;padding:12px 12px 43px;box-shadow:0 24px 65px #0007;transform:rotate(-3deg) scale(.88);opacity:0;transition:transform 1s,opacity 1s;position:relative}.polaroid.in{transform:rotate(-3deg) scale(1);opacity:1}.polaroid img{display:block;width:min(290px,62vw);height:min(370px,76vw);object-fit:cover;background:#271c24;color:#dfceca}.polaroid-caption{position:absolute;bottom:11px;left:0;right:0;color:#54424a;text-align:center;font:italic 18px var(--serif)}.closing{font:italic clamp(22px,4.2vw,34px)/1.35 var(--serif);color:#e9dbd6;max-width:620px;margin:32px auto 0}.closing strong{font-weight:500;color:var(--gold)}.confetti{position:fixed;inset:0;pointer-events:none;z-index:8;overflow:hidden}.confetti i{position:absolute;top:-15px;width:7px;height:12px;border-radius:1px;animation:fall 3.7s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(780deg);opacity:.35}}.sparkle{position:fixed;pointer-events:none;z-index:7;color:var(--gold);animation:sparkle .9s ease-out forwards}@keyframes sparkle{to{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0}}
     @media(max-width:600px){.top{padding:19px 20px;font-size:9px}.stage{padding:83px 19px 63px}.birth-content{min-height:530px}.birth-hint{top:calc(50% + 128px);font-size:16px;line-height:1.3}.birth-center{width:180px;height:180px}.birth-quote{font-size:17px}.birth-orbit{width:94vw}.game-panel{padding:32px 21px}.sentence{font-size:25px}.scroll-cue{bottom:20px}.polaroid{padding:9px 9px 37px}.polaroid img{width:min(250px,67vw);height:min(320px,78vw)}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+    /* Countdown, café, thirty-day garden, hands, and letter */
+    .countdown-gate,.song-gate{position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 32%,#492333 0,#1b111c 70%,#0c0a0e 100%);text-align:center}
+    .countdown-gate[hidden],.song-gate[hidden]{display:none}
+    .countdown-card{width:min(520px,100%);padding:clamp(30px,7vw,56px);border:1px solid #d9bd8548;background:#ffffff08;box-shadow:0 28px 100px #0008}
+    .countdown-clock{margin:20px 0;color:var(--gold);font:400 clamp(46px,13vw,86px)/1 var(--serif);font-variant-numeric:tabular-nums;letter-spacing:.04em}
+    .countdown-caption{min-height:50px;color:#d9c8cc;font:italic 19px/1.5 var(--serif)}
+    .story-lead{max-width:590px;margin:0 auto;color:#ead8d7;font:italic clamp(18px,3vw,23px)/1.55 var(--serif)}
+    .birth-content .anniversary{margin-top:24px}
+    .birth-content:before,.birth-content:after{position:absolute;z-index:-1;color:#f0c2c1;opacity:.28;pointer-events:none;animation:petalDrift 9s ease-in-out infinite}
+    .birth-content:before{content:"✿";top:20%;left:8%;font-size:24px}
+    .birth-content:after{content:"♡";right:7%;bottom:20%;font-size:20px;animation-delay:-4s}
+    @keyframes petalDrift{0%,100%{transform:translate3d(0,0,0) rotate(-12deg)}50%{transform:translate3d(8px,-14px,0) rotate(12deg)}}
+    .birth-hint{z-index:2}
+    .music-controls{position:fixed;right:16px;bottom:14px;z-index:6;display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid #d9bd8548;border-radius:30px;background:#160e17e8;box-shadow:0 8px 30px #0005;backdrop-filter:blur(10px)}
+    .music-controls[hidden]{display:none}
+    .music-toggle{min-width:42px;min-height:42px;border:1px solid #d9bd8566;border-radius:50%;background:#d9bd8514;color:var(--gold);cursor:pointer}
+    .music-volume{width:85px;accent-color:var(--gold)}
+    .music-volume-toggle{display:none;min-width:32px;min-height:32px;border:1px solid #ffffff25;border-radius:50%;background:transparent;color:var(--gold);cursor:pointer}
+    .music-label{color:#e5d6d5;font:italic 15px var(--serif)}
+    .song-gate{z-index:40;background:#100b12c9;backdrop-filter:blur(9px)}
+    .song-card{width:min(460px,100%);padding:clamp(28px,7vw,48px);border:1px solid #d9bd8570;background:linear-gradient(145deg,#3a202f,#1a111d);box-shadow:0 28px 100px #0009}
+    .song-card p{margin:0 0 13px;color:#f5e8e4;font:italic clamp(22px,5vw,31px)/1.35 var(--serif)}
+    .song-card p+p{margin-bottom:26px;color:#d6c2c5;font-size:19px}
+    .song-error{color:#f0bdc0;font-size:13px;line-height:1.6}
+    .cafe-wrap{width:min(760px,100%)}
+    .cafe-memory-card{position:relative;isolation:isolate;display:grid;place-content:center;gap:10px;min-height:250px;width:min(590px,100%);margin:34px auto 0;padding:38px 24px;overflow:hidden;border:1px solid #e8c89165;border-radius:26px;background:radial-gradient(ellipse at 50% 20%,#ffd68f32,transparent 54%),linear-gradient(145deg,#533342,#301e2b 60%,#211923);box-shadow:0 26px 80px #0007}
+    .cafe-memory-card:before,.cafe-memory-card:after{content:"";position:absolute;inset:14px;border:1px solid #e8c89130;border-radius:18px;pointer-events:none}
+    .cafe-memory-card:after{inset:auto auto 36px;left:50%;width:80px;height:1px;border:0;border-radius:0;background:linear-gradient(90deg,transparent,#e8c891a8,transparent);transform:translateX(-50%)}
+    .cafe-memory-date{margin:0;color:#e6cfa6;font-size:10px;letter-spacing:.25em;text-transform:uppercase}
+    .cafe-memory-name{margin:0;color:#f2d9a7;font:italic clamp(31px,7vw,49px)/1 var(--serif);text-shadow:0 0 30px #e4b97f3a}
+    .cafe-memory-line{margin:4px 0 0;color:#ead9d7;font:italic 19px/1.4 var(--serif)}
+    .cafe-flower{position:absolute;color:#f5d89c;font-size:22px;opacity:.75;animation:cafeFloat 4.5s ease-in-out infinite}
+    .cafe-flower.one{top:27px;left:12%;animation-delay:-1.2s}
+    .cafe-flower.two{right:13%;bottom:27px;color:#efa5b0;font-size:25px;animation-delay:-2.4s}
+    .cafe-flower.three{top:34%;right:9%;font-size:15px;animation-delay:-.5s}
+    @keyframes cafeFloat{0%,100%{transform:translateY(4px) rotate(-8deg);opacity:.5}50%{transform:translateY(-9px) rotate(8deg);opacity:1}}
+    @keyframes heartBeat{0%,100%{transform:scale(1)}20%{transform:scale(1.18)}40%{transform:scale(1)}60%{transform:scale(1.12)}}
+    @keyframes heartButtonPulse{0%,100%{box-shadow:0 0 25px #f1c98655}50%{box-shadow:0 0 36px #f1c986aa,0 0 64px #ed9ba666}}
+    .cafe-note{margin:20px auto 0;color:#dccbc9;font:italic 19px/1.55 var(--serif)}
+    .day-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:13px;width:min(620px,100%);margin:34px auto 22px}
+    .day-cell{display:grid;justify-items:center;gap:4px;color:#d8c6c8;font-size:11px;opacity:0;transform:translateY(8px) scale(.86);transition:opacity .5s,transform .5s}
+    .day-cell.in{opacity:1;transform:none}
+    .day-blossom{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;color:#f0a6a8;font-size:25px;text-shadow:0 0 14px #e46f8755;transform:scale(.35) rotate(-25deg);transition:transform .65s cubic-bezier(.2,.8,.2,1),color .4s}
+    .day-cell.in .day-blossom{transform:scale(1) rotate(0)}
+    .day-cell.milestone{color:var(--gold);font-weight:700}
+    .day-cell.milestone .day-blossom{color:#f7d58e;text-shadow:0 0 24px #f7d58e9c;animation:heartBeat 1.8s ease-in-out infinite}
+    .day-note{max-width:580px;margin:0 auto 30px;color:#c7b6bc;font:italic 16px/1.7 var(--serif)}
+    .milestone-label{margin:15px 0 0;color:var(--gold);font:italic 20px var(--serif)}
+    .memories-heading{margin:46px auto 0;color:#e7d9d6;font:italic 25px var(--serif)}
+    .memory-list{margin-top:25px}
+    .message-wrap.inset{margin:50px auto 0;padding-top:44px;border-top:1px solid #d9bd8526}
+    #hands{overflow:hidden}
+    .hands-interaction{position:relative;width:min(440px,90vw);margin:24px auto 0}
+    .hands-art{display:block;width:100%;height:auto;margin:0;overflow:visible}
+    .hands-limb{fill:none;stroke:#d6a387;stroke-width:28;stroke-linecap:round;stroke-linejoin:round}
+    .hands-sleeve{fill:none;stroke:#806174;stroke-width:42;stroke-linecap:round}
+    .hands-finger{fill:none;stroke:#e8b99b;stroke-width:14;stroke-linecap:round;stroke-linejoin:round}
+    .hand-left,.hand-right{opacity:0;transform-box:view-box;transform-origin:center;transition:transform 2.2s cubic-bezier(.2,.75,.25,1),opacity .6s}
+    #hands.complete .hand-left,#hands.complete .hand-right{opacity:1}
+    .hand-left{transform:translate(-42px,45px) rotate(-10deg)}
+    .hand-right{transform:translate(42px,45px) rotate(10deg)}
+    #hands.complete .hand-left{transform:translate(0,0) rotate(0)}
+    #hands.complete .hand-right{transform:translate(0,0) rotate(0)}
+    .closed-fists{opacity:1;transition:opacity .6s}
+    #hands.complete .closed-fists{opacity:0}
+    .hands-heart{fill:#e9939e;opacity:0;transform-box:fill-box;transform-origin:center;transition:opacity .8s}
+    #hands.complete .hands-heart{opacity:1;animation:heartBeat 1.5s ease-in-out infinite}
+    .hands-spark{fill:var(--gold);opacity:0}
+    #hands.complete .hands-spark{opacity:.9;animation:sparkFloat 2.4s ease-in-out infinite}
+    .heart-trigger{position:absolute;left:50%;top:63%;display:grid;place-items:center;width:54px;height:54px;border:1px solid #f2d79c;border-radius:50%;background:#f1c9862b;color:#fff0d5;font-size:30px;line-height:1;opacity:0;transform:translate(-50%,-50%) scale(.7);pointer-events:none;transition:opacity .6s,transform .6s,background .3s;box-shadow:0 0 25px #f1c98655}
+    #hands.hands-ready .heart-trigger{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto;animation:heartButtonPulse 1.5s ease-in-out infinite}
+    .heart-trigger:disabled{cursor:default}
+    .heart-trigger:not(:disabled){cursor:pointer}
+    .heart-trigger:not(:disabled):hover{background:#f1c98660}
+    .letter-envelope{position:relative;width:min(300px,78vw);height:195px;margin:130px auto 22px;perspective:900px;transition:height .5s .85s,margin .5s .85s,opacity .5s .85s,transform .5s .85s}
+    .envelope-back{position:absolute;inset:0;border:1px solid #e7cfae70;border-radius:5px;background:#d7ba91;box-shadow:0 20px 55px #0006}
+    .envelope-flap{position:absolute;inset:0 0 auto;height:58%;background:#e7cfae;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .8s;z-index:2}
+    .letter-seal{position:absolute;z-index:3;left:50%;top:42%;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#9e5866;color:#f9e5c7;transform:translate(-50%,-50%);transition:opacity .3s}
+    .letter-card{max-width:720px;margin:0 auto;padding:clamp(25px,6vw,54px);border:1px solid #e7cfae;background:linear-gradient(145deg,#f5e9d6,#e9d6be);box-shadow:0 28px 80px #0005;color:#35252b;text-align:left;opacity:0;transform:translateY(26px) scale(.97);transition:opacity .9s,transform .9s}
+    .letter-card[hidden]{display:none}
+    #letter.open .envelope-flap{transform:rotateX(180deg)}
+    #letter.open .letter-seal{opacity:0}
+    #letter.open .letter-card{opacity:1;transform:none}
+    #letter.open .letter-envelope{height:0;margin-top:0;margin-bottom:0;opacity:0;transform:translateY(12px)}
+    .letter-copy{white-space:pre-wrap;overflow-wrap:anywhere;color:#392b30;font:400 clamp(16px,2.4vw,19px)/1.85 var(--serif)}
+    .letter-signoff{margin:25px 0 0;text-align:right;color:#8b4d59;font:italic 22px var(--serif)}
+    #ending{isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 50% 20%,#704052 0,#382437 43%,#1b1420 82%,#100d13 100%)}
+    #ending:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 16% 72%,#d9a0a522,transparent 24%),radial-gradient(circle at 86% 32%,#e5c38d20,transparent 25%)}
+    .ending-content{width:min(850px,100%)}
+    .ending-garden{color:#f0c6a0;font-size:25px;letter-spacing:.45em;margin:21px 0}
+    .ending-wish{max-width:620px;margin:0 auto;color:#f2e4e2;font:italic clamp(21px,4vw,29px)/1.4 var(--serif)}
+    .ending-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,3vw,24px);width:min(670px,100%);margin:34px auto 0;align-items:center}
+    .ending-photo{margin:0;padding:8px 8px 12px;border:1px solid #f0d6b85e;border-radius:12px;background:linear-gradient(145deg,#f7e8d8,#d9c1ae);box-shadow:0 15px 40px #09070c66;transform:rotate(-3deg);transition:transform .35s,box-shadow .35s}
+    .ending-photo:nth-child(2){transform:translateY(-9px) rotate(2deg)}
+    .ending-photo:nth-child(3){transform:rotate(-1deg)}
+    .ending-photo:hover{transform:translateY(-7px) rotate(0) scale(1.025);box-shadow:0 22px 50px #09070c80}
+    .ending-photo img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px;background:#362635}
+    .ending-photo figcaption{padding-top:8px;color:#764c53;font:italic 14px/1 var(--serif)}
+    .ending-replay{margin-top:34px}
+    .song-gate .continue{margin:0}
+    @media(max-width:600px){
+      .music-controls{right:10px;bottom:10px;gap:6px;padding:5px 7px}.music-label{display:none}.music-volume{display:none;width:65px}.music-controls.volume-open .music-volume{display:block}.music-volume-toggle{display:block}
+      .day-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:10px 5px}.day-blossom{width:34px;height:34px;font-size:23px}
+      .cafe-note{font-size:17px}.cafe-memory-card{min-height:220px;padding:32px 18px}.letter-envelope{height:170px}
+      .ending-gallery{gap:9px;margin-top:27px}.ending-photo{padding:5px 5px 9px;border-radius:8px}.ending-photo figcaption{font-size:12px}
+      .ending-photo:nth-child(2){transform:translateY(-5px) rotate(2deg)}
+      .letter-card{padding:24px 20px}.letter-copy{font-size:16px;line-height:1.8}
+    }
+    @media(prefers-reduced-motion:reduce){.letter-envelope{transition-delay:0s!important}}
   </style>
   <style>
     /* Password gate, anniversary counter, and shared-story timeline */
@@ -92,43 +201,164 @@
       <p class="password-feedback" id="passwordFeedback" aria-live="polite"></p>
     </form>
   </div>
+  <div class="countdown-gate" id="countdownGate" hidden aria-live="polite">
+    <div class="countdown-card">
+      <p class="kicker" id="countdownKicker">një mbrëmje, vetëm për ne</p>
+      <h1 class="heading" id="countdownHeading">Po afrohet ora jonë.</h1>
+      <p class="countdown-clock" id="countdownClock">00:00:00</p>
+      <p class="countdown-caption" id="countdownCaption">Disa çaste deri te kujtimi ynë.</p>
+    </div>
+  </div>
+  <div class="song-gate" id="songGate" hidden role="dialog" aria-modal="true" aria-labelledby="songPrompt">
+    <div class="song-card">
+      <p id="songPrompt">Kam përgatitur një këngë vetëm për ty.</p>
+      <p>Shtyp këtu dhe dëgjoje deri në fund.</p>
+      <button class="primary" id="songStart" type="button">Dëgjo këngën tonë</button>
+      <p class="song-error" id="songError" hidden></p>
+      <button class="continue" id="songDismiss" type="button">Vazhdo pa muzikë</button>
+    </div>
+  </div>
   <div class="ambient" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
   <header class="top"><span class="brand">L I N D J A</span><span class="chapter" id="chapter">I &nbsp;·&nbsp; FILLIMI</span></header>
+  <div class="music-controls" id="musicControls" hidden aria-label="Kontrollet e këngës">
+    <button class="music-toggle" id="musicToggle" type="button" aria-label="Luaj këngën" aria-pressed="false">♫</button>
+    <span class="music-label">kënga jonë</span>
+    <button class="music-volume-toggle" id="musicVolumeToggle" type="button" aria-label="Hap kontrollin e volumit" aria-expanded="false">⋯</button>
+    <label class="hidden" for="musicVolume">Volumi i këngës</label>
+    <input class="music-volume" id="musicVolume" type="range" min="0" max="1" step="0.05" value="0.7" aria-label="Volumi">
+  </div>
+  <audio id="storyAudio" preload="none">
+    <source src="Emina, Ti Je A Ndjenj.mp3.mpeg" type="audio/mpeg">
+  </audio>
 
-  <!-- SCENA 1 — LARVA: fjalët e mbledhura i japin formë fotos. -->
+  <!-- Pjesa e re nis këtu; përmbajtja ekzistuese vazhdon pas fundit të historisë. -->
   <section class="stage" id="birth" aria-label="Lindja">
     <div class="birth-orbit" aria-hidden="true"></div>
     <div class="content birth-content">
-      <p class="kicker">çdo gjë e bukur fillon diku</p>
-      <h1 class="birth-title">Para se të bëheshe <em>ti</em>...</h1>
-      <p class="subtle" id="birthIntro" class="subtle">...fillove si një ndjenjë që po merrte formë.</p>
-      <div class="anniversary" aria-live="off">
-        <p class="anniversary-label">që nga 19.09.2026 · 22:22</p>
-        <p class="anniversary-count"><span id="dayCount">0</span> ditë bashkë</p>
-        <p class="anniversary-time" id="elapsedTime">00:00:00:00</p>
-        <div class="rose-garden"><canvas id="roseGarden" aria-hidden="true"></canvas></div>
-        <p class="flower-counts" aria-live="off"><span class="red-count">✿ <strong id="dayFlowerCount">0</strong> të kuqe · një për çdo ditë</span><span class="white-count">✿ <strong id="hourFlowerCount">0</strong> të bardha · një për çdo orë</span></p>
-        <p class="rose-caption">lulet rriten bashkë me kohën tonë ♡</p>
-      </div>
-      <iframe class="music-player" id="musicPlayer" title="Alban Skenderaj feat. Majk — Mrekullia e 8" data-src="https://embed.music.apple.com/us/album/mrekullia-e-8-feat-majk/1157548844?i=1157549023&amp;autoplay=1&amp;loop=1" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" loading="lazy"></iframe>
-      <a class="music-link" href="https://music.apple.com/us/album/mrekullia-e-8-feat-majk/1157548844?i=1157549023" target="_blank" rel="noopener noreferrer">♫ &nbsp;Hape dhe përsërite në Apple Music <span aria-hidden="true">↗</span></a>
-      <div class="birth-hint" id="birthHint" aria-live="polite"></div>
-      <div class="birth-center" id="birthCenter">
-        <div class="birth-aura"></div><div class="birth-blob" id="birthBlob"></div>
-        <!-- PLACEHOLDER FOTO: zëvendëso images/ajo.jpg me fotografinë e saj. -->
-        <img class="birth-photo" id="herPhoto" src="IMG_3551.png" alt="Fotografia e saj" onerror="this.style.display='none';document.getElementById('birthCenter').classList.add('photo-error')">
-        <div class="birth-photo-note" aria-hidden="true">këtu vendoset<br>fotoja e saj ♡</div>
-      </div>
-      <p class="birth-quote" id="birthQuote">Dhe tani, të gjitha fjalët kanë një fytyrë.</p>
-      <div class="progress-track" id="progressTrack" aria-label="Përparimi i lindjes"><div class="progress-fill" id="progressFill"></div></div>
+      <p class="kicker">një muaj me ty, Emina</p>
+      <h1 class="birth-title">Gjithçka nisi në <em>atë mbrëmje.</em></h1>
+      <p class="story-lead">Një mbrëmje e veçantë hapi rrugën e historisë sonë — sot po festojmë muajin tonë të parë.</p>
     </div>
-    <a class="scroll-cue" id="scrollCue" href="#moments">scroll për të vazhduar <span>↓</span></a>
+    <a class="scroll-cue" id="scrollCue" href="#cafe">scroll për të vazhduar <span>↓</span></a>
+  </section>
+
+  <section class="stage" id="cafe" aria-label="Takimi ynë i parë në Buongiorno café">
+    <div class="content cafe-wrap">
+      <p class="kicker">aty ku filloi shikimi ynë</p>
+      <h2 class="heading">Një mbrëmje në <em class="gold">Buongiorno.</em></h2>
+      <div class="cafe-memory-card" aria-label="Këtu nisi shikimi ynë në Buongiorno café">
+        <span class="cafe-flower one" aria-hidden="true">✿</span>
+        <span class="cafe-flower two" aria-hidden="true">♡</span>
+        <span class="cafe-flower three" aria-hidden="true">✦</span>
+        <p class="cafe-memory-date">Mbrëmja jonë e parë</p>
+        <p class="cafe-memory-name">Buongiorno café</p>
+        <p class="cafe-memory-line">Këtu nisi shikimi ynë.</p>
+      </div>
+      <button class="continue" data-goto="moments">vazhdo historinë &nbsp;↓</button>
+    </div>
   </section>
 
   <section class="stage" id="moments" aria-label="Kronologjia jonë">
     <div class="content message-wrap">
-      <p class="kicker">katër data, një histori</p>
-      <h2 class="heading">Nga një kërkesë<br><em class="gold">te ne të dy.</em></h2>
+      <p class="kicker">ditë pas dite, kujtim pas kujtimi</p>
+      <h2 class="heading">30 ditë me ty.<br><em class="gold">Dhe shumë përpara.</em></h2>
+      <p class="day-note">Kujtimet tona rriten në kohën që ndajmë — dashuria nuk matet me praninë fizike çdo ditë.</p>
+      <div class="day-grid" id="dayGrid" aria-label="Ditët 1 deri në 30"></div>
+      <p class="milestone-label" id="dayThirty">Dita 30 · muaji ynë i parë ♡</p>
+      <button class="continue" data-goto="hands">vazhdo udhëtimin &nbsp;↓</button>
+    </div>
+  </section>
+
+  <section class="stage" id="hands" aria-label="Dy duar formojnë një zemër">
+    <div class="content">
+      <p class="kicker">dy duar, një zemër</p>
+      <h2 class="heading">E jona, <em class="gold">bashkë.</em></h2>
+      <div class="hands-interaction">
+      <svg class="hands-art" viewBox="0 0 440 390" role="img" aria-labelledby="handsTitle handsDescription">
+        <title id="handsTitle">Dy duar që bashkohen për të formuar një zemër</title>
+        <desc id="handsDescription">Dy duar të vizatuara ngrihen dhe afrohen derisa gishtat formojnë zemrën e tyre.</desc>
+        <path class="hands-spark" d="M81 83l5 13 13 5-13 5-5 13-5-13-13-5 13-5z"/>
+        <path class="hands-spark" d="M359 104l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/>
+        <path class="hands-spark" d="M220 51l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>
+        <g class="closed-fists" fill="#d6a387" stroke="#e8b99b" stroke-width="3">
+          <circle cx="184" cy="304" r="27"/><path d="M170 301q14-12 28 0M174 310q10-8 20 0" fill="none" stroke-linecap="round"/>
+          <circle cx="256" cy="304" r="27"/><path d="M242 301q14-12 28 0M246 310q10-8 20 0" fill="none" stroke-linecap="round"/>
+        </g>
+        <g class="hand-left">
+          <path class="hands-sleeve" d="M107 380q39-39 78-75"/>
+          <path class="hands-limb" d="M185 306q20-26 43-45"/>
+          <path class="hands-finger" d="M220 262q-39-35-53-70-8-21 9-26 14-4 23 14l27 39"/>
+          <path class="hands-finger" d="M226 250q-23-57-17-88 3-18 18-16 14 1 16 20l8 59"/>
+          <path class="hands-finger" d="M243 248q-8-51 5-72 8-13 20-7 13 7 8 23l-8 48"/>
+          <path class="hands-limb" d="M250 247q22 6 37 24l32 36"/>
+          <path d="M220 263q-4-20 13-27 17-7 29 10" fill="none" stroke="#e8b99b" stroke-width="14" stroke-linecap="round"/>
+        </g>
+        <g class="hand-right">
+          <path class="hands-sleeve" d="M333 380q-39-39-78-75"/>
+          <path class="hands-limb" d="M255 306q-20-26-43-45"/>
+          <path class="hands-finger" d="M220 262q39-35 53-70 8-21-9-26-14-4-23 14l-27 39"/>
+          <path class="hands-finger" d="M214 250q23-57 17-88-3-18-18-16-14 1-16 20l-8 59"/>
+          <path class="hands-finger" d="M197 248q8-51-5-72-8-13-20-7-13 7-8 23l8 48"/>
+          <path class="hands-limb" d="M190 247q-22 6-37 24l-32 36"/>
+          <path d="M220 263q4-20-13-27-17-7-29 10" fill="none" stroke="#e8b99b" stroke-width="14" stroke-linecap="round"/>
+        </g>
+        <path class="hands-heart" d="M220 219c-12-15-34 4 0 31 34-27 12-46 0-31z"/>
+      </svg>
+      <button class="heart-trigger" id="openLetterHeart" type="button" disabled aria-label="Preke zemrën për të hapur letrën">♡</button>
+      </div>
+      <p class="cafe-note">Kur duart bashkohen, zemra hap letrën.</p>
+    </div>
+  </section>
+
+  <section class="stage" id="letter" aria-label="Letra ime për ty">
+    <div class="content">
+      <p class="kicker">me fjalët e mia, për ty</p>
+      <h2 class="heading">Një letër <em class="gold">nga zemra.</em></h2>
+      <div class="letter-envelope" aria-hidden="true">
+        <div class="envelope-back"></div><div class="envelope-flap"></div><span class="letter-seal">♥</span>
+      </div>
+      <button class="primary" id="openLetterButton" type="button" aria-expanded="false" aria-controls="letterCard">Hape letrën</button>
+      <article class="letter-card" id="letterCard" hidden>
+        <div class="letter-copy" id="letterCopy">Syni jeme rrapatushi jeme edhe pse mas miri kishte kene sikur sonte te ishim bashk une po mundohem te pruj dicka prej vedit aty.
+Kajn kalu fiks 1muj 30dite prej nji nate te gzume te  nje nate qe na celi rrugen per te hyre ne tunel do thoshin ku ka vec drite njerzt filozof por une po them prej nje nate ku cdo ore cdo minute cdo sekonde eshte nje fare me shume ne kopshtine tone qe po krijojm te mbushura me lule.
+Sdi shume me u shpreh ja se sjam burr po se ti te lene pa fjale vec tu menu per ty e paramenoje te kisha kene prezent me kishte ra te fikt si ate naten qe jam dridh kur te kam rroke per here te pare 😂 ja ja se te kisha kene prezent vec te kisha rroke edhe kishte kene ball hahahahhahahaha
+Thjesht du me te kallxu qe kta 30dite kajn kene dite ma te mira te jetes teme e vec tu menu per kta 30dite si kena kalu me shkan ne men jan edhe  shume 30dite perpara kuhhh qe normalitikisht kajn me kene cdo 30diteh ma i bukur se njeni tjetri.
+Prej 30 ditsh shume kujtime sidamas ata nete e kafes ku me bahet me ti kap flokt edhe me ti pre mi marr me vedi po sban se dallohna kafe thet aka hahahahaha kshtu qe edhe pak maj vajze e ke me mete pa floke sa ta dish
+Faleminers syni jeme per cdo gja edhe me fal nese te kam ba mu ni keq ose me ba dyshime thjesht sjena perfekt asnjeni por bashk po po bashk me ty jam perfekt aq perfekte sa simboli i yin yang si e bardha me te zeze qe perputhen ne simbol ose si mbreti ne shah me duket vedi qe ka me mbrojte mbretereshen konstant.
+Thjesht tu e pa shikimin tane une maraj ose kur ibqyri da foto si me shikaj ti sdi vec di me te than me shikjankrejt jeten ishtu edhe mas me fole hyc eshte mire
+Emina&#32;
+Lepurush
+Majmune
+Syne
+Jete
+Beba jeme
+Rrapatushi jeme
+Mina jeme&#32;
+Kam me te dasht shume shume deri kur te thahet pika e funit e oqeanit qe dmth pergjithmone</div>
+        <button class="continue" data-goto="ending">vazhdo udhëtimin &nbsp;↓</button>
+      </article>
+    </div>
+  </section>
+
+  <section class="stage" id="ending" aria-label="Muaji ynë i parë">
+    <div class="content ending-content">
+      <p class="kicker">një surprizë për muajin tonë të parë</p>
+      <h2 class="heading">Emina, <em class="gold">30 ditët tona.</em></h2>
+      <div class="ending-garden" aria-hidden="true">✿ &nbsp;♡&nbsp; ✿</div>
+      <p class="ending-wish">Uroj ta kemi këtë shikim, sot e krejt jetën. ♡</p>
+      <div class="ending-gallery" aria-label="Fotografi nga kujtimet tona">
+        <figure class="ending-photo"><img src="p1.jpeg" alt="Kujtimi ynë, fotoja 1" loading="lazy" decoding="async"><figcaption>me ty ♡</figcaption></figure>
+        <figure class="ending-photo"><img src="p2.jpeg" alt="Kujtimi ynë, fotoja 2" loading="lazy" decoding="async"><figcaption>gjithmonë ♡</figcaption></figure>
+        <figure class="ending-photo"><img src="p3.jpeg" alt="Kujtimi ynë, fotoja 3" loading="lazy" decoding="async"><figcaption>ne të dy ♡</figcaption></figure>
+      </div>
+      <button class="primary ending-replay" id="replayStory" type="button">Përjetoje përsëri ♡</button>
+    </div>
+  </section>
+
+  <section class="stage" id="storyMemories" aria-label="Kujtimet tona">
+    <div class="content message-wrap">
+      <p class="kicker">vazhdon historia jonë</p>
+      <h2 class="heading">Disa nga <em class="gold">kujtime tona.</em></h2>
       <div class="timeline" id="timeline">
         <article class="moment">
           <p class="moment-date">09.09</p>
@@ -179,7 +409,6 @@
     </div>
   </section>
 
-  <!-- SCENA 2 — mesazhi shfaqet fjali pas fjalie kur seksioni hyn në pamje. -->
   <section class="stage" id="message" aria-label="Mesazhi">
     <div class="content message-wrap">
       <p class="kicker">gjërat që dua të dish</p><h2 class="heading">Nuk janë premtime.<br><em class="gold">Janë zgjedhje.</em></h2>
@@ -260,10 +489,42 @@
       </div>
     </div>
   </section>
+
+  <section class="stage" id="originalMemories" aria-label="Lulet dhe fotografia jonë">
+    <div class="birth-orbit" aria-hidden="true"></div>
+    <div class="content birth-content">
+      <p class="kicker">disa kujtime të tjera, vetëm për ty</p>
+      <h2 class="birth-title">Para se të bëheshe <em>ti...</em></h2>
+      <p class="subtle" id="birthIntro">...fillove si një ndjenjë që po merrte formë.</p>
+      <div class="anniversary" aria-live="off">
+        <p class="anniversary-label">që nga 19.09.2026 · 22:22</p>
+        <p class="anniversary-count"><span id="dayCount">0</span> ditë bashkë</p>
+        <p class="anniversary-time" id="elapsedTime">00:00:00:00</p>
+        <div class="rose-garden"><canvas id="roseGarden" aria-hidden="true"></canvas></div>
+        <p class="flower-counts" aria-live="off"><span class="red-count">✿ <strong id="dayFlowerCount">0</strong> të kuqe · një për çdo ditë</span><span class="white-count">✿ <strong id="hourFlowerCount">0</strong> të bardha · një për çdo orë</span></p>
+        <p class="rose-caption">lulet rriten bashkë me kohën tonë ♡</p>
+      </div>
+      <div class="birth-hint" id="birthHint" aria-live="polite"></div>
+      <div class="birth-center" id="birthCenter">
+        <div class="birth-aura"></div><div class="birth-blob" id="birthBlob"></div>
+        <img class="birth-photo" id="herPhoto" src="IMG_3551.png" alt="Fotografia e saj" onerror="this.style.display='none';document.getElementById('birthCenter').classList.add('photo-error')">
+        <div class="birth-photo-note" aria-hidden="true">këtu vendoset<br>fotoja e saj ♡</div>
+      </div>
+      <p class="birth-quote" id="birthQuote">Dhe tani, të gjitha fjalët kanë një fytyrë.</p>
+      <div class="progress-track" id="progressTrack" aria-label="Përparimi i lindjes"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+  </section>
   <div class="confetti" id="confetti" aria-hidden="true"></div>
 
   <script>
     // Ndrysho këto tekste dhe emra sipas dëshirës; të gjitha gjendjet jetojnë këtu.
+    const STORY_CONFIG={targetHour:22,targetMinute:22,targetSecond:0,countdownMinutes:2,anniversaryStart:new Date(2026,8,19,22,22,0)};
+    const testTime=new URLSearchParams(window.location.search).get('storyTestTime');
+    if(testTime){
+      const match=testTime.match(/^([01]\d|2[0-3]):([0-5]\d)(?::([0-5]\d))?$/);
+      if(match){STORY_CONFIG.targetHour=Number(match[1]);STORY_CONFIG.targetMinute=Number(match[2]);STORY_CONFIG.targetSecond=Number(match[3]||0);}
+      else console.error('storyTestTime duhet të jetë në formatin HH:MM ose HH:MM:SS.');
+    }
     const birthPhrases=[
       "e bukur si drita që s'ka nevojë të kërkojë burim",
       "e sinqertë deri atje ku dhemb, por s'gënjen kurrë",
@@ -279,42 +540,110 @@
     const $=id=>document.getElementById(id);
     const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // Fjalitë e gjata kanë kohë të mjaftueshme për t'u lexuar para tjetrës.
-    const duration=reduceMotion?1500:3800;
-    let phraseIndex=0,nameMisses=0,noCount=0,storyStarted=false;
+    const duration=reduceMotion?1000:2200;
+    let phraseIndex=0,nameMisses=0,noCount=0,storyStarted=false,storyUnlocked=false,countdownTimer=null,handsTimer=null;
+    const birthTimers=[];
+
+    function countdownTarget(now){
+      const target=new Date(now);
+      target.setHours(STORY_CONFIG.targetHour,STORY_CONFIG.targetMinute,STORY_CONFIG.targetSecond,0);
+      return target;
+    }
+    function getCountdownState(now){
+      const target=countdownTarget(now),preparation=new Date(target.getTime()-STORY_CONFIG.countdownMinutes*60000);
+      if(now>=target)return {phase:'open',target,preparation,remaining:0};
+      const finalCountdown=now>=preparation;
+      const destination=finalCountdown?target:preparation;
+      const remaining=Math.max(0,Math.ceil((destination-now)/1000));
+      return {phase:finalCountdown?'final':'waiting',target,preparation,remaining};
+    }
+    function updateCountdown(now=new Date()){
+      const state=getCountdownState(now);
+      if(state.phase==='open'){openStory();return;}
+      const {phase,target,preparation,remaining}=state;
+      const hours=Math.floor(remaining/3600),minutes=Math.floor(remaining%3600/60),seconds=remaining%60;
+      $('countdownClock').textContent=`${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+      $('countdownKicker').textContent=phase==='final'?'edhe pak çaste':'një mbrëmje, vetëm për ne';
+      $('countdownHeading').textContent=phase==='final'?'Po afrohet ora jonë.':'Po përgatitet kujtimi ynë.';
+      const formatLocalTime=date=>`${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}`;
+      $('countdownCaption').textContent=phase==='final'?`Në ${formatLocalTime(target)}, historia jonë fillon.`:`Numërimi i vogël nis në ${formatLocalTime(preparation)}.`;
+    }
+    function beginCountdown(){
+      $('countdownGate').hidden=false;
+      updateCountdown();
+      if(!storyUnlocked)countdownTimer=window.setInterval(updateCountdown,250);
+    }
+    function showSongPrompt(error){
+      $('songGate').hidden=false;
+      $('songError').hidden=!error;
+      $('songError').textContent=error?'Kënga nuk mund të luhet tani. Kontrollo që skedari audio të jetë pranë kësaj faqeje dhe provo sërish.':'';
+    }
+    function playSong(){
+      const audio=$('storyAudio');
+      const playback=audio.play();
+      if(playback&&typeof playback.then==='function')playback.then(()=>$('songGate').hidden=true).catch(()=>showSongPrompt(Boolean(audio.error)));
+    }
+    function openStory(){
+      if(storyUnlocked)return;
+      storyUnlocked=true;
+      if(countdownTimer!==null)window.clearInterval(countdownTimer);
+      $('countdownGate').hidden=true;
+      $('musicControls').hidden=false;
+      $('scrollCue').classList.add('visible');
+      playSong();
+    }
 
     // Scene 1: reveal each phrase at 1.8 s intervals and grow the little form.
     function showBirthPhrase(){
       if(phraseIndex>=birthPhrases.length){finishBirth();return;}
       const hint=$('birthHint');hint.classList.remove('visible');
-      window.setTimeout(()=>{
+      birthTimers.push(window.setTimeout(()=>{
         const index=phraseIndex++;hint.textContent=birthPhrases[index];hint.classList.toggle('last',index===birthPhrases.length-1);hint.classList.add('visible');
         // Çdo frazë zbehet drejt larvës, ndërsa larva rritet gradualisht.
         const scale=.3+(.7*(index+1)/birthPhrases.length);$('birthBlob').style.setProperty('--blob-size',`${20+scale*65}%`);
-        window.setTimeout(()=>hint.classList.remove('visible'),duration-650);
+        birthTimers.push(window.setTimeout(()=>hint.classList.remove('visible'),duration-650));
         $('progressFill').style.width=`${(index+1)*10}%`;
-        if(phraseIndex<birthPhrases.length)window.setTimeout(showBirthPhrase,duration);
-        else window.setTimeout(finishBirth,duration+450);
-      },350);
+        if(phraseIndex<birthPhrases.length)birthTimers.push(window.setTimeout(showBirthPhrase,duration));
+        else birthTimers.push(window.setTimeout(finishBirth,duration+450));
+      },350));
     }
     function finishBirth(){
       $('birthCenter').classList.add('revealed');$('birthHint').classList.remove('visible');$('birthHint').textContent='';
-      $('birthIntro').textContent='';$('birthQuote').classList.add('show');$('progressTrack').style.opacity='0';$('scrollCue').classList.add('visible');
+      $('birthQuote').classList.add('show');$('progressTrack').style.opacity='0';$('scrollCue').classList.add('visible');
     }
     function startBirth(){if(storyStarted)return;storyStarted=true;showBirthPhrase();}
-    if('IntersectionObserver'in window){const birthObserver=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){startBirth();birthObserver.disconnect();}},{threshold:.25});birthObserver.observe($('birth'));}
-    else startBirth();
+    if('IntersectionObserver'in window){const birthObserver=new IntersectionObserver(entries=>{if(storyUnlocked&&entries.some(e=>e.isIntersecting))startBirth();},{threshold:.25});birthObserver.observe($('originalMemories'));}
+    else window.addEventListener('scroll',()=>{
+      const bounds=$('originalMemories').getBoundingClientRect();
+      if(storyUnlocked&&bounds.top<window.innerHeight&&bounds.bottom>0)startBirth();
+    },{passive:true});
 
     // Chapter label follows the active scene; message lines animate on arrival.
-    const chapterNames={birth:'I  ·  FILLIMI',moments:'II  ·  HISTORIA',message:'III  ·  FJALËT',game:'IV  ·  LOJA',reveal:'V  ·  E VËRTETA',love:'VI  ·  NE TË DY'};
+    const chapterNames={birth:'I  ·  FILLIMI',cafe:'II  ·  TAKIMI',moments:'III  ·  30 DITË',hands:'IV  ·  ZEMRA',letter:'V  ·  LETRA',ending:'VI  ·  NE TË DY',storyMemories:'VII  ·  KUJTIMET',message:'VIII  ·  FJALËT',game:'IX  ·  LOJA',reveal:'X  ·  E VËRTETA',love:'XI  ·  FOTOGRAFIA',originalMemories:'XII  ·  LULET TONA'};
+    for(let day=1;day<=30;day++){
+      const cell=document.createElement('div'),blossom=document.createElement('span'),label=document.createElement('span');
+      cell.className=`day-cell${day===30?' milestone':''}`;
+      cell.setAttribute('aria-label',`Dita ${day}${day===30?', muaji ynë i parë':''}`);
+      blossom.className='day-blossom';blossom.setAttribute('aria-hidden','true');blossom.textContent='✿';
+      label.textContent=`dita ${day}`;
+      cell.append(blossom,label);$('dayGrid').append(cell);
+    }
     if('IntersectionObserver'in window){
       const sceneObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)$('chapter').textContent=chapterNames[entry.target.id]||'';}),{threshold:.35});
-      ['birth','moments','message','game','reveal','love'].forEach(id=>sceneObserver.observe($(id)));
-      const lineObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){const lines=[...$('sentences').children];lines.forEach((line,i)=>window.setTimeout(()=>line.classList.add('in'),i*(reduceMotion?150:2500)));lineObserver.disconnect();}}),{threshold:.2});lineObserver.observe($('sentences'));
-      const momentObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){const moments=[...$('timeline').children];moments.forEach((moment,i)=>window.setTimeout(()=>moment.classList.add('in'),i*(reduceMotion?100:350)));momentObserver.disconnect();}}),{threshold:.2});momentObserver.observe($('timeline'));
-    }else{[...$('sentences').children].forEach(line=>line.classList.add('in'));[...$('timeline').children].forEach(moment=>moment.classList.add('in'));}
+      ['birth','cafe','moments','hands','letter','ending','storyMemories','message','game','reveal','love','originalMemories'].forEach(id=>sceneObserver.observe($(id)));
+      const lineObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){const lines=[...$('sentences').children];lines.forEach((line,i)=>window.setTimeout(()=>line.classList.add('in'),i*(reduceMotion?150:2500)));}}),{threshold:.2});lineObserver.observe($('sentences'));
+      const momentObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){const moments=[...$('timeline').children];moments.forEach((moment,i)=>window.setTimeout(()=>moment.classList.add('in'),i*(reduceMotion?100:350)));}}),{threshold:.2});momentObserver.observe($('timeline'));
+      const dayObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)[...$('dayGrid').children].forEach((cell,i)=>window.setTimeout(()=>cell.classList.add('in'),reduceMotion?0:i*55));}),{threshold:.2});dayObserver.observe($('dayGrid'));
+      const handsObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){$('hands').classList.add('complete');if(handsTimer!==null)window.clearTimeout(handsTimer);handsTimer=window.setTimeout(()=>{$('hands').classList.add('hands-ready');$('openLetterHeart').disabled=false;},reduceMotion?0:2200);}}),{threshold:.35});handsObserver.observe($('hands'));
+    }else{
+      [...$('sentences').children].forEach(line=>line.classList.add('in'));
+      [...$('timeline').children].forEach(moment=>moment.classList.add('in'));
+      [...$('dayGrid').children].forEach(cell=>cell.classList.add('in'));
+      $('hands').classList.add('complete','hands-ready');$('openLetterHeart').disabled=false;
+    }
 
     // One red blossom for each completed day and one smaller white blossom per hour.
-    const anniversaryStart=new Date(2026,8,19,22,22,0);
+    const anniversaryStart=STORY_CONFIG.anniversaryStart;
     const gardenCanvas=$('roseGarden');
     const gardenContext=gardenCanvas.getContext('2d');
     let previousElapsedHour=-1,previousDayCount=-1;
@@ -362,8 +691,8 @@
       event.preventDefault();
       if($('passwordInput').value==='19092222'){
         $('passwordFeedback').textContent='';$('passwordGate').classList.add('dismissed');$('passwordInput').value='';
-        $('musicPlayer').src=$('musicPlayer').dataset.src;
         window.setTimeout(()=>$('passwordGate').remove(),750);
+        window.setTimeout(beginCountdown,750);
         return;
       }
       $('passwordFeedback').textContent='Fjalëkalimi nuk është i saktë. Provo edhe një herë ♡';
@@ -371,8 +700,69 @@
       $('passwordInput').select();
     });
 
+    const storyAudio=$('storyAudio');
+    storyAudio.volume=Number($('musicVolume').value);
+    storyAudio.addEventListener('error',()=>showSongPrompt(true));
+    storyAudio.addEventListener('play',()=>{$('musicToggle').textContent='Ⅱ';$('musicToggle').setAttribute('aria-label','Ndalo këngën');$('musicToggle').setAttribute('aria-pressed','true');});
+    storyAudio.addEventListener('pause',()=>{$('musicToggle').textContent='♫';$('musicToggle').setAttribute('aria-label','Luaj këngën');$('musicToggle').setAttribute('aria-pressed','false');});
+    storyAudio.addEventListener('ended',()=>{$('musicToggle').textContent='♫';$('musicToggle').setAttribute('aria-label','Luaj këngën');$('musicToggle').setAttribute('aria-pressed','false');});
+    $('songStart').addEventListener('click',playSong);
+    $('songDismiss').addEventListener('click',()=>$('songGate').hidden=true);
+    $('musicToggle').addEventListener('click',()=>{
+      if(storyAudio.paused)playSong();
+      else storyAudio.pause();
+    });
+    $('musicVolumeToggle').addEventListener('click',event=>{
+      const open=$('musicControls').classList.toggle('volume-open');
+      event.currentTarget.setAttribute('aria-expanded',String(open));
+      event.currentTarget.setAttribute('aria-label',open?'Mbyll kontrollin e volumit':'Hap kontrollin e volumit');
+    });
+    $('musicVolume').addEventListener('input',event=>{storyAudio.volume=Number(event.target.value);});
+
     // Buttons that move to the next scene scroll smoothly.
     document.querySelectorAll('[data-goto]').forEach(button=>button.addEventListener('click',()=>$(button.dataset.goto).scrollIntoView({behavior:reduceMotion?'auto':'smooth'})));
+    function openLetter(){
+      if($('letterCard').hidden){
+        $('letterCard').hidden=false;
+        window.requestAnimationFrame(()=>$('letter').classList.add('open'));
+      }
+      $('openLetterButton').setAttribute('aria-expanded','true');
+      $('openLetterButton').textContent='Letra u hap ♡';
+      $('openLetterButton').disabled=true;
+      $('letter').scrollIntoView({behavior:reduceMotion?'auto':'smooth'});
+    }
+    $('openLetterButton').addEventListener('click',openLetter);
+    $('openLetterHeart').addEventListener('click',openLetter);
+    $('replayStory').addEventListener('click',()=>{
+      if(handsTimer!==null)window.clearTimeout(handsTimer);handsTimer=null;
+      birthTimers.forEach(timer=>window.clearTimeout(timer));birthTimers.length=0;
+      phraseIndex=0;storyStarted=false;storyUnlocked=true;nameMisses=0;noCount=0;
+      $('birthCenter').classList.remove('revealed','photo-error');
+      $('birthBlob').style.removeProperty('--blob-size');
+      $('birthHint').classList.remove('visible','last');$('birthHint').textContent='';
+      $('birthQuote').classList.remove('show');$('progressFill').style.width='0';$('progressTrack').style.opacity='';
+      $('scrollCue').classList.add('visible');
+      $('dayGrid').querySelectorAll('.day-cell').forEach(cell=>cell.classList.remove('in'));
+      $('timeline').querySelectorAll('.moment').forEach(moment=>moment.classList.remove('in'));
+      $('sentences').querySelectorAll('.sentence').forEach(line=>line.classList.remove('in'));
+      $('hands').classList.remove('complete','hands-ready');
+      $('openLetterHeart').disabled=true;
+      $('letter').classList.remove('open');$('letterCard').hidden=true;
+      $('openLetterButton').disabled=false;$('openLetterButton').textContent='Hape letrën';$('openLetterButton').setAttribute('aria-expanded','false');
+      $('nameStep').classList.remove('hidden');$('ageStep').classList.add('hidden');
+      $('nameInput').value='';$('ageInput').value='';$('nameFeedback').textContent='';$('ageFeedback').textContent='';
+      $('nameNote').textContent='Ke kohë sa të duash ♡';
+      $('revealQuestion').classList.remove('hidden');$('declaration').classList.add('hidden');
+      $('revealFeedback').textContent='';$('finalLines').querySelectorAll('.final-line').forEach(line=>line.classList.remove('in'));
+      $('loveQuestion').classList.remove('hidden');$('sureQuestion').classList.add('hidden');
+      $('photoReveal').classList.add('hidden');
+      $('loveFeedback').textContent='';$('sureFeedback').textContent='';$('polaroid').classList.remove('in');
+      document.querySelectorAll('.press').forEach(button=>button.classList.remove('shrink','grow'));
+      $('gamePanel').classList.remove('success-flash','shake');$('revealPanel').classList.remove('success-flash','shake');$('lovePanel').classList.remove('success-flash','shake');
+      $('songGate').hidden=true;$('confetti').textContent='';
+      $('chapter').textContent=chapterNames.birth;
+      window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'});
+    });
     function normalize(value){return value.trim().toLocaleLowerCase('sq').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ë/g,'e').replace(/ç/g,'c').replace(/[^a-z0-9 ]/g,'').replace(/\s+/g,' ');}
     function celebrate(){
       const box=$('confetti'),colors=['#d9bd85','#d99aa7','#f0e5d6','#aa7481','#fff'];
