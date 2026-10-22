@@ -25,12 +25,9 @@
     .final-lines{display:grid;gap:19px;margin:30px auto 0}.final-line{font:400 clamp(22px,4vw,34px)/1.3 var(--serif);color:#e6d9d6;opacity:0;transform:translateY(12px);transition:opacity 1.2s,transform 1.2s}.final-line.in{opacity:1;transform:none}.final-line.last{font-size:clamp(32px,6vw,52px);color:var(--gold)}.polaroid{display:inline-block;background:#f1e9df;padding:12px 12px 43px;box-shadow:0 24px 65px #0007;transform:rotate(-3deg) scale(.88);opacity:0;transition:transform 1s,opacity 1s;position:relative}.polaroid.in{transform:rotate(-3deg) scale(1);opacity:1}.polaroid img{display:block;width:min(290px,62vw);height:min(370px,76vw);object-fit:cover;background:#271c24;color:#dfceca}.polaroid-caption{position:absolute;bottom:11px;left:0;right:0;color:#54424a;text-align:center;font:italic 18px var(--serif)}.closing{font:italic clamp(22px,4.2vw,34px)/1.35 var(--serif);color:#e9dbd6;max-width:620px;margin:32px auto 0}.closing strong{font-weight:500;color:var(--gold)}.confetti{position:fixed;inset:0;pointer-events:none;z-index:8;overflow:hidden}.confetti i{position:absolute;top:-15px;width:7px;height:12px;border-radius:1px;animation:fall 3.7s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(780deg);opacity:.35}}.sparkle{position:fixed;pointer-events:none;z-index:7;color:var(--gold);animation:sparkle .9s ease-out forwards}@keyframes sparkle{to{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0}}
     @media(max-width:600px){.top{padding:19px 20px;font-size:9px}.stage{padding:83px 19px 63px}.birth-content{min-height:530px}.birth-hint{top:calc(50% + 128px);font-size:16px;line-height:1.3}.birth-center{width:180px;height:180px}.birth-quote{font-size:17px}.birth-orbit{width:94vw}.game-panel{padding:32px 21px}.sentence{font-size:25px}.scroll-cue{bottom:20px}.polaroid{padding:9px 9px 37px}.polaroid img{width:min(250px,67vw);height:min(320px,78vw)}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
-    /* Countdown, café, thirty-day garden, hands, and letter */
-    .countdown-gate,.song-gate{position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 32%,#492333 0,#1b111c 70%,#0c0a0e 100%);text-align:center}
-    .countdown-gate[hidden],.song-gate[hidden]{display:none}
-    .countdown-card{width:min(520px,100%);padding:clamp(30px,7vw,56px);border:1px solid #d9bd8548;background:#ffffff08;box-shadow:0 28px 100px #0008}
-    .countdown-clock{margin:20px 0;color:var(--gold);font:400 clamp(46px,13vw,86px)/1 var(--serif);font-variant-numeric:tabular-nums;letter-spacing:.04em}
-    .countdown-caption{min-height:50px;color:#d9c8cc;font:italic 19px/1.5 var(--serif)}
+    /* Café, thirty-day garden, hands, and letter */
+    .song-gate{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:24px;background:#100b12c9;backdrop-filter:blur(9px);text-align:center}
+    .song-gate[hidden]{display:none}
     .story-lead{max-width:590px;margin:0 auto;color:#ead8d7;font:italic clamp(18px,3vw,23px)/1.55 var(--serif)}
     .birth-content .anniversary{margin-top:24px}
     .birth-content:before,.birth-content:after{position:absolute;z-index:-1;color:#f0c2c1;opacity:.28;pointer-events:none;animation:petalDrift 9s ease-in-out infinite}
@@ -44,7 +41,6 @@
     .music-volume{width:85px;accent-color:var(--gold)}
     .music-volume-toggle{display:none;min-width:32px;min-height:32px;border:1px solid #ffffff25;border-radius:50%;background:transparent;color:var(--gold);cursor:pointer}
     .music-label{color:#e5d6d5;font:italic 15px var(--serif)}
-    .song-gate{z-index:40;background:#100b12c9;backdrop-filter:blur(9px)}
     .song-card{width:min(460px,100%);padding:clamp(28px,7vw,48px);border:1px solid #d9bd8570;background:linear-gradient(145deg,#3a202f,#1a111d);box-shadow:0 28px 100px #0009}
     .song-card p{margin:0 0 13px;color:#f5e8e4;font:italic clamp(22px,5vw,31px)/1.35 var(--serif)}
     .song-card p+p{margin-bottom:26px;color:#d6c2c5;font-size:19px}
@@ -200,14 +196,6 @@
       <button class="password-submit" type="submit">Hap kujtimin ♡</button>
       <p class="password-feedback" id="passwordFeedback" aria-live="polite"></p>
     </form>
-  </div>
-  <div class="countdown-gate" id="countdownGate" hidden aria-live="polite">
-    <div class="countdown-card">
-      <p class="kicker" id="countdownKicker">një mbrëmje, vetëm për ne</p>
-      <h1 class="heading" id="countdownHeading">Po afrohet ora jonë.</h1>
-      <p class="countdown-clock" id="countdownClock">00:00:00</p>
-      <p class="countdown-caption" id="countdownCaption">Disa çaste deri te kujtimi ynë.</p>
-    </div>
   </div>
   <div class="song-gate" id="songGate" hidden role="dialog" aria-modal="true" aria-labelledby="songPrompt">
     <div class="song-card">
@@ -518,13 +506,7 @@ Kam me te dasht shume shume deri kur te thahet pika e funit e oqeanit qe dmth pe
 
   <script>
     // Ndrysho këto tekste dhe emra sipas dëshirës; të gjitha gjendjet jetojnë këtu.
-    const STORY_CONFIG={targetHour:22,targetMinute:22,targetSecond:0,countdownMinutes:2,anniversaryStart:new Date(2026,8,19,22,22,0)};
-    const testTime=new URLSearchParams(window.location.search).get('storyTestTime');
-    if(testTime){
-      const match=testTime.match(/^([01]\d|2[0-3]):([0-5]\d)(?::([0-5]\d))?$/);
-      if(match){STORY_CONFIG.targetHour=Number(match[1]);STORY_CONFIG.targetMinute=Number(match[2]);STORY_CONFIG.targetSecond=Number(match[3]||0);}
-      else console.error('storyTestTime duhet të jetë në formatin HH:MM ose HH:MM:SS.');
-    }
+    const STORY_CONFIG={anniversaryStart:new Date(2026,8,19,22,22,0)};
     const birthPhrases=[
       "e bukur si drita që s'ka nevojë të kërkojë burim",
       "e sinqertë deri atje ku dhemb, por s'gënjen kurrë",
@@ -541,38 +523,9 @@ Kam me te dasht shume shume deri kur te thahet pika e funit e oqeanit qe dmth pe
     const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // Fjalitë e gjata kanë kohë të mjaftueshme për t'u lexuar para tjetrës.
     const duration=reduceMotion?1000:2200;
-    let phraseIndex=0,nameMisses=0,noCount=0,storyStarted=false,storyUnlocked=false,countdownTimer=null,handsTimer=null;
+    let phraseIndex=0,nameMisses=0,noCount=0,storyStarted=false,storyUnlocked=false,handsTimer=null;
     const birthTimers=[];
 
-    function countdownTarget(now){
-      const target=new Date(now);
-      target.setHours(STORY_CONFIG.targetHour,STORY_CONFIG.targetMinute,STORY_CONFIG.targetSecond,0);
-      return target;
-    }
-    function getCountdownState(now){
-      const target=countdownTarget(now),preparation=new Date(target.getTime()-STORY_CONFIG.countdownMinutes*60000);
-      if(now>=target)return {phase:'open',target,preparation,remaining:0};
-      const finalCountdown=now>=preparation;
-      const destination=finalCountdown?target:preparation;
-      const remaining=Math.max(0,Math.ceil((destination-now)/1000));
-      return {phase:finalCountdown?'final':'waiting',target,preparation,remaining};
-    }
-    function updateCountdown(now=new Date()){
-      const state=getCountdownState(now);
-      if(state.phase==='open'){openStory();return;}
-      const {phase,target,preparation,remaining}=state;
-      const hours=Math.floor(remaining/3600),minutes=Math.floor(remaining%3600/60),seconds=remaining%60;
-      $('countdownClock').textContent=`${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
-      $('countdownKicker').textContent=phase==='final'?'edhe pak çaste':'një mbrëmje, vetëm për ne';
-      $('countdownHeading').textContent=phase==='final'?'Po afrohet ora jonë.':'Po përgatitet kujtimi ynë.';
-      const formatLocalTime=date=>`${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}`;
-      $('countdownCaption').textContent=phase==='final'?`Në ${formatLocalTime(target)}, historia jonë fillon.`:`Numërimi i vogël nis në ${formatLocalTime(preparation)}.`;
-    }
-    function beginCountdown(){
-      $('countdownGate').hidden=false;
-      updateCountdown();
-      if(!storyUnlocked)countdownTimer=window.setInterval(updateCountdown,250);
-    }
     function showSongPrompt(error){
       $('songGate').hidden=false;
       $('songError').hidden=!error;
@@ -586,8 +539,6 @@ Kam me te dasht shume shume deri kur te thahet pika e funit e oqeanit qe dmth pe
     function openStory(){
       if(storyUnlocked)return;
       storyUnlocked=true;
-      if(countdownTimer!==null)window.clearInterval(countdownTimer);
-      $('countdownGate').hidden=true;
       $('musicControls').hidden=false;
       $('scrollCue').classList.add('visible');
       playSong();
@@ -692,7 +643,7 @@ Kam me te dasht shume shume deri kur te thahet pika e funit e oqeanit qe dmth pe
       if($('passwordInput').value==='19092222'){
         $('passwordFeedback').textContent='';$('passwordGate').classList.add('dismissed');$('passwordInput').value='';
         window.setTimeout(()=>$('passwordGate').remove(),750);
-        window.setTimeout(beginCountdown,750);
+        window.setTimeout(openStory,750);
         return;
       }
       $('passwordFeedback').textContent='Fjalëkalimi nuk është i saktë. Provo edhe një herë ♡';
